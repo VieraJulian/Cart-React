@@ -13,9 +13,30 @@ export const Header = ({ allProducts, setAllProducts, total, setTotal, countProd
     }
 
     const onClearCart = () => {
-        setTotal(0),
-            setCountProducts(0)
+        setTotal(0);
+        setCountProducts(0);
         setAllProducts([])
+    }
+
+    const oneMore = (product) => {
+        const products = allProducts.map(item => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item)
+
+        setTotal(total + product.price)
+        setCountProducts(countProducts + 1)
+        return setAllProducts([...products])
+    }
+
+    const oneLess = (product) => {
+
+        if (product.quantity > 1) {
+            const products = allProducts.map(item => item.id === product.id ? { ...item, quantity: item.quantity - 1 } : item)
+
+            setTotal(total - product.price)
+            setCountProducts(countProducts - 1)
+            return setAllProducts([...products])
+        }
+
+        onDeleteProduct(product)
     }
 
     return (
@@ -56,8 +77,8 @@ export const Header = ({ allProducts, setAllProducts, total, setTotal, countProd
                                                 <p className="titulo-producto-carrito">{product.nameProduct}</p>
                                                 <p className="precio-producto-carrito">${product.price}</p>
                                                 <div className="btnsQuantity">
-                                                    <button className="btnQuantityMore">+</button>
-                                                    <button className="btnQuantityLess">-</button>
+                                                    <button className="btnQuantityMore" onClick={() => oneMore(product)}>+</button>
+                                                    <button className="btnQuantityLess" onClick={() => oneLess(product)}>-</button>
                                                 </div>
                                             </div>
                                             <div>
