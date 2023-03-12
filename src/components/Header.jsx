@@ -3,6 +3,7 @@ import React from "react";
 export const Header = () => {
     return (
         <header>
+            
             <h1>ElectroShopX</h1>
 
             <div className="container-icon">
