@@ -1,4 +1,5 @@
-import { React, useState } from "react"
+import { React, useState } from "react";
+import { toast } from 'react-toastify';
 
 export const Header = ({ allProducts, setAllProducts, total, setTotal, countProducts, setCountProducts }) => {
 
@@ -16,6 +17,17 @@ export const Header = ({ allProducts, setAllProducts, total, setTotal, countProd
         setTotal(0);
         setCountProducts(0);
         setAllProducts([])
+
+        toast.success('Carrito vaciado!', {
+            position: "bottom-right",
+            autoClose: 2500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
     }
 
     const oneMore = (product) => {

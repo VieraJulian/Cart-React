@@ -1,6 +1,8 @@
-import { useState } from "react"
+import { React, useState } from "react"
 import { Header } from "./components/Header"
 import { ProductList } from "./components/productList"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   // Los productos del carrito
@@ -12,6 +14,18 @@ function App() {
 
   return (
     <>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <Header
         allProducts={allProducts}
         setAllProducts={setAllProducts}

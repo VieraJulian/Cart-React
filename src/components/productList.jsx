@@ -1,7 +1,21 @@
 import React from "react";
 import { data } from "../data";
+import { toast } from 'react-toastify';
 
 export const ProductList = ({ allProducts, setAllProducts, countProducts, setCountProducts, total, setTotal }) => {
+
+    const alert = () => {
+        toast.success('Producto agregado!', {
+            position: "bottom-right",
+            autoClose: 2500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+    }
 
     const onAddProduct = (product) => {
 
@@ -11,12 +25,14 @@ export const ProductList = ({ allProducts, setAllProducts, countProducts, setCou
 
             setTotal(total + product.price)
             setCountProducts(countProducts + product.quantity)
+            alert()
             return setAllProducts([...products])
         }
 
         setTotal(total + product.price * product.quantity)
         setCountProducts(countProducts + product.quantity)
         setAllProducts([...allProducts, product])
+        alert()
     }
 
     return (
