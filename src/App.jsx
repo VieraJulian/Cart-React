@@ -1,16 +1,19 @@
 import { React, useState } from "react"
-import { Header } from "./components/Header"
-import { ProductList } from "./components/productList"
+// import { Header } from "./components/Header"
+// import { ProductList } from "./components/productList"
 import { ToastContainer, toast } from 'react-toastify';
+import { Routes, Route } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 
+import { Home } from "./components/Home";
+
 function App() {
-  // Los productos del carrito
-  const [allProducts, setAllProducts] = useState([]);
-  // Precio total del carrito
-  const [total, setTotal] = useState(0);
-  // Cantidad total de productos en el carrito
-  const [countProducts, setCountProducts] = useState(0);
+  // // Los productos del carrito
+  // const [allProducts, setAllProducts] = useState([]);
+  // // Precio total del carrito
+  // const [total, setTotal] = useState(0);
+  // // Cantidad total de productos en el carrito
+  // const [countProducts, setCountProducts] = useState(0);
 
   return (
     <>
@@ -26,7 +29,7 @@ function App() {
         pauseOnHover
         theme="light"
       />
-      <Header
+      {/* <Header
         allProducts={allProducts}
         setAllProducts={setAllProducts}
         total={total}
@@ -39,7 +42,10 @@ function App() {
         total={total}
         setTotal={setTotal}
         countProducts={countProducts}
-        setCountProducts={setCountProducts} />
+        setCountProducts={setCountProducts} /> */}
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+      </Routes>
     </>
   )
 }
